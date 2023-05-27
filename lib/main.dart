@@ -61,7 +61,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 5, 145, 238),
-        title: Text("Rapid Tech"),
+        title: Text("Try & Buy"),
       ),
       body: container,
       drawer: Drawer(

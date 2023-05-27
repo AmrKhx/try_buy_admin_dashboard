@@ -14,8 +14,8 @@ class ProductsScreen extends StatelessWidget {
             child: const Text(
               'Products',
               style: TextStyle(
-                fontWeight: FontWeight.w700,
-                fontSize: 36,
+                fontWeight: FontWeight.w500,
+                fontSize: 28,
               ),
             ),
           ),

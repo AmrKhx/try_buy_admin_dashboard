@@ -21,9 +21,6 @@ class _MyHeaderDrawerState extends State<MyHeaderDrawer> {
             height: 70,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              image: DecorationImage(
-                image: AssetImage('assets/images/profile.jpg'),
-              ),
             ),
           ),
           Text(

@@ -31,24 +31,25 @@ class ReportsWidget extends StatelessWidget {
                 children: [
                   Text('Name:  ' + productsData['Name'],
                       style: TextStyle(
-                        fontWeight: FontWeight.w700,
+                        fontWeight: FontWeight.w300,
                         fontSize: 30,
                       )),
                   Text('PhoneNumber :   ' + productsData['PhoneNumber'],
                       style: TextStyle(
-                        fontWeight: FontWeight.w700,
+                        fontWeight: FontWeight.w300,
                         fontSize: 30,
                       )),
                   Text('Email:   ' + productsData['Email'],
                       style: TextStyle(
-                        fontWeight: FontWeight.w700,
+                        fontWeight: FontWeight.w300,
                         fontSize: 35,
                       )),
                   Text('Description:  ' + productsData['Description'],
                       style: TextStyle(
-                        fontWeight: FontWeight.w700,
+                        fontWeight: FontWeight.w300,
                         fontSize: 30,
                       )),
+                  Divider(),
                 ],
               );
             });
