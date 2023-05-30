@@ -18,38 +18,79 @@ class ReportsWidget extends StatelessWidget {
 
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(
-            child: CircularProgressIndicator(color: Colors.cyan),
+            child: CircularProgressIndicator(),
           );
         }
 
         return ListView.builder(
+          scrollDirection: Axis.vertical,
             shrinkWrap: true,
             itemCount: snapshot.data!.size,
             itemBuilder: (context, index) {
               final productsData = snapshot.data!.docs[index];
               return Column(
                 children: [
-                  Text('Name:  ' + productsData['Name'],
-                      style: TextStyle(
-                        fontWeight: FontWeight.w300,
-                        fontSize: 30,
-                      )),
-                  Text('PhoneNumber :   ' + productsData['PhoneNumber'],
-                      style: TextStyle(
-                        fontWeight: FontWeight.w300,
-                        fontSize: 30,
-                      )),
-                  Text('Email:   ' + productsData['Email'],
-                      style: TextStyle(
-                        fontWeight: FontWeight.w300,
-                        fontSize: 35,
-                      )),
-                  Text('Description:  ' + productsData['Description'],
-                      style: TextStyle(
-                        fontWeight: FontWeight.w300,
-                        fontSize: 30,
-                      )),
-                  Divider(),
+                  Container(
+                    width: MediaQuery.of(context).size.width - 50,
+                    height:MediaQuery.of(context).size.height/ 3,
+                    padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                    margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                    decoration: BoxDecoration(
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(50)),
+                        color: const Color(0xFFFAFAFA),
+                        border: Border.all(
+                            color: const Color(0xFF001C55), width: 2.0)),
+                    child: Column(
+                      //mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          'Name:  ' + productsData['Name'],
+                          style: const TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.w700,
+                              color: Color(0xFF001C55)),
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          'PhoneNumber :   ' + productsData['PhoneNumber'],
+                          style: const TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.w700,
+                              color: Color(0xFF001C55)),
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          'Email:   ' + productsData['Email'],
+                          style: const TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.w700,
+                              color: Color(0xFF001C55)),
+                        ),
+                        Text(
+                          'Description:  ' + productsData['Description'],
+                          style: const TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.w700,
+                              color: Color(0xFF001C55)),
+                        ),
+                        const SizedBox(
+                          height: 5,
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  )
                 ],
               );
             });
@@ -57,3 +98,30 @@ class ReportsWidget extends StatelessWidget {
     );
   }
 }
+
+//
+// Column(
+// children: [
+// Text('Name:  ' + productsData['Name'],
+// style: TextStyle(
+// fontWeight: FontWeight.w300,
+// fontSize: 30,
+// )),
+// Text('PhoneNumber :   ' + productsData['PhoneNumber'],
+// style: TextStyle(
+// fontWeight: FontWeight.w300,
+// fontSize: 30,
+// )),
+// Text('Email:   ' + productsData['Email'],
+// style: TextStyle(
+// fontWeight: FontWeight.w300,
+// fontSize: 35,
+// )),
+// Text('Description:  ' + productsData['Description'],
+// style: TextStyle(
+// fontWeight: FontWeight.w300,
+// fontSize: 30,
+// )),
+// Divider(),
+// ],
+// );
