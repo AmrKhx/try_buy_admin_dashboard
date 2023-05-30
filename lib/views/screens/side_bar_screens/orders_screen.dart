@@ -1,4 +1,4 @@
-import 'package:try_buy_admin_dashboard/views/screens/side_bar_screens/widgets/orders_widget.dart';
+import 'package:try_buy_admin_dashboard/views/screens/side_bar_screens/widgets/new_widget.dart';
 import 'package:flutter/material.dart';
 
 class OrdersScreen extends StatelessWidget {
@@ -22,7 +22,7 @@ class OrdersScreen extends StatelessWidget {
           Divider(
             color: Colors.black,
           ),
-          OrdersWidget()
+          GetUserName('18875')
         ],
       ),
     );

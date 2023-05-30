@@ -1,34 +1,40 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class OrdersWidget extends StatelessWidget {
-  const OrdersWidget({super.key});
+// Import the firebase_core and cloud_firestore plugin
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+class GetUserName extends StatelessWidget {
+  final String documentId;
+
+  GetUserName(this.documentId);
+
   @override
   Widget build(BuildContext context) {
-    final Stream<QuerySnapshot> _productsStream =
-        FirebaseFirestore.instance.collection('Orders').snapshots();
+    CollectionReference users = FirebaseFirestore.instance
+        .collection('orders')
+        .snapshots() as CollectionReference<Object?>;
 
-    return StreamBuilder<QuerySnapshot>(
-      stream: _productsStream,
-      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+    return FutureBuilder<DocumentSnapshot>(
+      future: users.doc(documentId).get(),
+      builder:
+          (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
         if (snapshot.hasError) {
-          return Text('Something went wrong');
+          return Text("Something went wrong");
         }
 
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(
-            child: CircularProgressIndicator(color: Colors.cyan),
-          );
+        if (snapshot.hasData && !snapshot.data!.exists) {
+          return Text("Document does not exist");
         }
 
         return GridView.builder(
             padding: EdgeInsets.zero,
             shrinkWrap: true,
-            itemCount: snapshot.data!.size,
+            itemCount: 3,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 5, mainAxisSpacing: 12, crossAxisSpacing: 12),
             itemBuilder: (context, index) {
-              final productsData = snapshot.data!.docs[index];
+              final productsData = snapshot.data![index]['items'];
+
               return Column(
                 children: [
                   Container(
@@ -36,7 +42,7 @@ class OrdersWidget extends StatelessWidget {
                     width: 150,
                     child: Image.network(productsData['productImage']),
                   ),
-                  Text('Name:  ' + productsData['name'],
+                  Text('Name:  ' + productsData['productName'],
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         fontSize: 15,

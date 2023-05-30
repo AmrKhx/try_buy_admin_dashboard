@@ -61,9 +61,9 @@ class _MainScreenState extends State<MainScreen> {
       sideBar: SideBar(
         items: [
           AdminMenuItem(
-            title: 'Dashboard',
-            route: DashboardScreen.routeName,
-            icon: CupertinoIcons.collections_solid,
+            title: 'Products',
+            route: ProductsScreen.routeName,
+            icon: Icons.shop,
           ),
           AdminMenuItem(
             title: 'Vendors',
@@ -76,9 +76,9 @@ class _MainScreenState extends State<MainScreen> {
             route: OrdersScreen.routeName,
           ),
           AdminMenuItem(
-            title: 'Products',
-            route: ProductsScreen.routeName,
-            icon: Icons.shop,
+            title: 'Dashboard',
+            route: DashboardScreen.routeName,
+            icon: CupertinoIcons.collections_solid,
           ),
           AdminMenuItem(
             title: 'Reports',
