@@ -1,7 +1,5 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
-import 'package:try_buy_admin_dashboard/views/screens/side_bar_screens/widgets/reports_widget.dart';
+import 'package:try_buy_admin_dashboard/views/screens/side_bar_screens/widgets/dashboard_widget.dart';
 
 class ReportsScreen extends StatelessWidget {
   static const String routeName = '\reports';
@@ -23,7 +21,7 @@ class ReportsScreen extends StatelessWidget {
               ),
             ),
           ),
-          ReportsWidget()
+          DashboardWidget()
         ],
       ),
     );
