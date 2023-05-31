@@ -23,7 +23,7 @@ class OrdersScreen extends StatelessWidget {
           Divider(
             color: Colors.black,
           ),
-          OrderWidget1(),
+          OrderWidget(),
         ],
       ),
     );
