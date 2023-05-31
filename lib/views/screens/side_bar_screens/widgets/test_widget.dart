@@ -10,27 +10,10 @@ class OrderWidget extends StatefulWidget {
 
 
 class _OrderWidgetState extends State<OrderWidget> {
-  var Orders=<Map>[];
-  List<OrderFetch> items = [];
+  var Orders=<Map> [];
+  List mainItems = [];
+  List items =<Map> [];
 
-  // void initState() {
-  //   super.initState();
-  //   getOrders();
-  // }
-  //
-  // void getOrders() async {
-  //
-  //   await FirebaseFirestore.instance
-  //       .collection('Orders')
-  //       .get()
-  //       .then((querySnapshot) async {
-  //     for (var docSnapshot in querySnapshot.docs) {
-  //       setState(() {
-  //           Data = docSnapshot.data();
-  //       });
-  //     }
-  //   });
-  // }
 
   void initState() {
       super.initState();
@@ -45,6 +28,9 @@ class _OrderWidgetState extends State<OrderWidget> {
       for (var doc in querySnapshot.docs) {
         Orders.add(doc.data() as Map);
       }
+      mainItems = Orders[0]['items'];
+      print(mainItems);
+      print(mainItems.length);
     });
   }
 
@@ -69,58 +55,49 @@ class _OrderWidgetState extends State<OrderWidget> {
 
         return GridView.builder(
             shrinkWrap: true,
-            itemCount: snapshot.data!.size,
+            itemCount: snapshot.data!.docs.length,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 5, mainAxisSpacing: 12, crossAxisSpacing: 12),
             itemBuilder: (context, index) {
-              items.add(OrderFetch(
-                Orders[0]['price'],
-                Orders[0]['productId'].toString(),
-                Orders[0]['productName'].toString(),
-                Orders[0]['productImage'].toString(),
-                Orders[0]['quantity'],
-                Orders[0]['status'].toString(),
-              ));
-              print("this is items of $items");
-              print("this is orders of $Orders");
 
-              // return Column(
-              //   children: [
-              //     Text('Id:  ' + OrderData['orderId'],
-              //         style: TextStyle(
-              //           fontWeight: FontWeight.w700,
-              //           fontSize: 15,
-              //         )),
-              //     Container(
-              //       height: 200,
-              //       width: 150,
-              //       child: Image.network(OrderData['productImage']),
-              //     ),
-              //     Text('Name:  ' + OrderData['name'],
-              //         style: TextStyle(
-              //           fontWeight: FontWeight.w700,
-              //           fontSize: 15,
-              //         )),
-              //     Text('Price:  ' + OrderData['price'].toString() + ' EGP',
-              //         style: TextStyle(
-              //             fontWeight: FontWeight.w700,
-              //             fontSize: 15,
-              //             color: Colors.green)),
-              //   ],
-              // );
+                  return Column(
+                    children: [
+                      Text('Id:  ' + Orders[index]['orderId'].toString(),
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 15,
+                          )),
+                      Container(
+                        height: 200,
+                        width: 150,
+                        child: Image.network(mainItems[index]['productImage']),
+                      ),
+                      Text('Name:  ' + mainItems[index]['productName'],
+                          style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            fontSize: 15,
+                          )),
+                      Text('Price:  ' + mainItems[index]['price'].toString() + ' EGP',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w700,
+                              fontSize: 15,
+                              color: Colors.green)),
+                    ],
+                  );
+
             });
       },
     );
   }
 }
 
-class OrderFetch {
-  int price;
-  String productId;
-  String productName;
-  String productImage;
-  int quantity;
-  String status;
-
-  OrderFetch(this.price, this.productId, this.productImage, this.productName, this.quantity,this.status);
-}
+// class OrderFetch {
+//   int price;
+//   String productId;
+//   String productName;
+//   String productImage;
+//   int quantity;
+//   String status;
+//
+//   OrderFetch(this.price, this.productId, this.productImage, this.productName, this.quantity,this.status);
+// }
