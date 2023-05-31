@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class OrderWidget1 extends StatelessWidget {
-  const OrderWidget1({super.key});
+class CategoryWidget extends StatelessWidget {
+  const CategoryWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
-      stream: FirebaseFirestore.instance.collection('Orders').snapshots(),
+    final Stream<QuerySnapshot> _productsStream =
+        FirebaseFirestore.instance.collection('Categories').snapshots();
+
+    return StreamBuilder<QuerySnapshot>(
+      stream: _productsStream,
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.hasError) {
           return Text('Something went wrong');
@@ -23,22 +26,22 @@ class OrderWidget1 extends StatelessWidget {
             shrinkWrap: true,
             itemCount: snapshot.data!.size,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 4, mainAxisSpacing: 12, crossAxisSpacing: 12),
+                crossAxisCount: 5, mainAxisSpacing: 12, crossAxisSpacing: 12),
             itemBuilder: (context, index) {
-              final productsData = snapshot.data!.docs[index].get('items');
+              final productsData = snapshot.data!.docs[index];
               return Column(
                 children: [
                   Container(
                     height: 200,
                     width: 150,
-                    child: Image.network(productsData['productImage']),
+                    child: Image.network(productsData['categoryImage']),
                   ),
-                  Text('Name:  ' + productsData['productName'],
+                  Text('Category:  ' + productsData['categoryName'],
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         fontSize: 15,
                       )),
-                  Text('Price:  ' + productsData['price'].toString() + ' EGP',
+                  Text(productsData['body'],
                       style: TextStyle(
                           fontWeight: FontWeight.w700,
                           fontSize: 15,

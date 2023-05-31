@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage> {
     if (currentPage == DrawerSections.dashboard) {
       container = DashboardScreen();
     } else if (currentPage == DrawerSections.vendors) {
-      container = VendorsScreen();
+      container = CategoryScreen();
     } else if (currentPage == DrawerSections.products) {
       container = ProductsScreen();
     } else if (currentPage == DrawerSections.orders) {
@@ -89,7 +89,7 @@ class _HomePageState extends State<HomePage> {
         children: [
           menuItem(1, "Dashboard", Icons.dashboard_outlined,
               currentPage == DrawerSections.dashboard ? true : false),
-          menuItem(2, "Vendors", Icons.people_alt_outlined,
+          menuItem(2, "Category", Icons.category_outlined,
               currentPage == DrawerSections.vendors ? true : false),
           menuItem(3, "Products", Icons.shopping_bag_rounded,
               currentPage == DrawerSections.products ? true : false),

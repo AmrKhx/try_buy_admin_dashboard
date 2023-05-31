@@ -37,11 +37,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               isExpanded = !isExpanded;
                             });
                           },
-                          icon: Icon(Icons.menu),
+                          icon: Icon(Icons.refresh),
                         ),
                         CircleAvatar(
-                          backgroundImage: NetworkImage(
-                              "https://faces-img.xcdn.link/image-lorem-face-3430.jpg"),
+                          backgroundImage:
+                              NetworkImage("assets/images/logo2.png"),
                           radius: 26.0,
                         ),
                       ],
@@ -236,7 +236,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         Column(
                           children: [
                             Text(
-                              "6 Articles",
+                              "Reports",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 28.0,
@@ -245,29 +245,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             SizedBox(
                               height: 10.0,
                             ),
-                            Text(
-                              "3 new Articles",
-                              style: TextStyle(
-                                  color: Colors.grey,
-                                  fontSize: 18.0,
-                                  fontWeight: FontWeight.w400),
-                            ),
                           ],
                         ),
-                        Container(
-                          width: 300.0,
-                          child: TextField(
-                            decoration: InputDecoration(
-                              hintText: "Type Article Title",
-                              prefixIcon: Icon(Icons.search),
-                              border: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                  color: Colors.black26,
-                                ),
-                              ),
-                            ),
-                          ),
-                        )
                       ],
                     ),
                     SizedBox(
@@ -275,65 +254,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     ),
 
                     //let's set the filter section
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        TextButton.icon(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.arrow_back,
-                            color: Colors.deepPurple.shade400,
-                          ),
-                          label: Text(
-                            "2022, July 14, July 15, July 16",
-                            style: TextStyle(
-                              color: Colors.deepPurple.shade400,
-                            ),
-                          ),
-                        ),
-                        Row(
-                          children: [
-                            DropdownButton(
-                                hint: Text("Filter by"),
-                                items: [
-                                  DropdownMenuItem(
-                                    value: "Date",
-                                    child: Text("Date"),
-                                  ),
-                                  DropdownMenuItem(
-                                    value: "Comments",
-                                    child: Text("Comments"),
-                                  ),
-                                  DropdownMenuItem(
-                                    value: "Views",
-                                    child: Text("Views"),
-                                  ),
-                                ],
-                                onChanged: (value) {}),
-                            SizedBox(
-                              width: 20.0,
-                            ),
-                            DropdownButton(
-                                hint: Text("Order by"),
-                                items: [
-                                  DropdownMenuItem(
-                                    value: "Date",
-                                    child: Text("Date"),
-                                  ),
-                                  DropdownMenuItem(
-                                    value: "Comments",
-                                    child: Text("Comments"),
-                                  ),
-                                  DropdownMenuItem(
-                                    value: "Views",
-                                    child: Text("Views"),
-                                  ),
-                                ],
-                                onChanged: (value) {}),
-                          ],
-                        ),
-                      ],
-                    ),
+
                     SizedBox(
                       height: 40.0,
                     ),
@@ -344,38 +265,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     SizedBox(
                       height: 40.0,
                     ),
-                    Row(
-                      children: [
-                        TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            "1",
-                            style: TextStyle(color: Colors.deepPurple),
-                          ),
-                        ),
-                        TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            "2",
-                            style: TextStyle(color: Colors.deepPurple),
-                          ),
-                        ),
-                        TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            "3",
-                            style: TextStyle(color: Colors.deepPurple),
-                          ),
-                        ),
-                        TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            "See All",
-                            style: TextStyle(color: Colors.deepPurple),
-                          ),
-                        ),
-                      ],
-                    )
                   ],
                 ),
               ),
@@ -384,11 +273,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
         ],
       ),
       //let's add the floating action button
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Icon(Icons.add),
-        backgroundColor: Colors.deepPurple.shade400,
-      ),
     );
   }
 }

@@ -1,21 +1,27 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:try_buy_admin_dashboard/views/screens/side_bar_screens/widgets/category_widget.dart';
 
-class VendorsScreen extends StatelessWidget {
-  static const String routeName = '\VendorsSc';
-
+class CategoryScreen extends StatelessWidget {
+  static const String routeName = '\Category';
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Container(
-        alignment: Alignment.topLeft,
-        padding: const EdgeInsets.all(10),
-        child: const Text(
-          'Manage Vendors',
-          style: TextStyle(
-            fontWeight: FontWeight.w700,
-            fontSize: 36,
+      child: Column(
+        children: [
+          Container(
+            alignment: Alignment.topCenter,
+            padding: const EdgeInsets.all(10),
+            child: const Text(
+              'Category',
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 28,
+              ),
+            ),
           ),
-        ),
+          Divider(),
+          CategoryWidget()
+        ],
       ),
     );
   }

@@ -24,9 +24,9 @@ class _MainScreenState extends State<MainScreen> {
         });
         break;
 
-      case VendorsScreen.routeName:
+      case CategoryScreen.routeName:
         setState(() {
-          _selectedItem = VendorsScreen();
+          _selectedItem = CategoryScreen();
         });
         break;
 
@@ -66,13 +66,13 @@ class _MainScreenState extends State<MainScreen> {
             icon: Icons.shop,
           ),
           AdminMenuItem(
-            title: 'Vendors',
-            icon: CupertinoIcons.person_3_fill,
-            route: VendorsScreen.routeName,
+            title: 'Category',
+            icon: Icons.category_outlined,
+            route: CategoryScreen.routeName,
           ),
           AdminMenuItem(
             title: 'Orders',
-            icon: Icons.shopping_cart,
+            icon: CupertinoIcons.cart_badge_plus,
             route: OrdersScreen.routeName,
           ),
           AdminMenuItem(
