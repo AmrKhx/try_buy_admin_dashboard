@@ -49,7 +49,7 @@ class DashboardWidget extends StatelessWidget {
                         ]),
                       ]),
                   SizedBox(
-                    height: 20,
+                    height: 1,
                   )
                 ],
               );
