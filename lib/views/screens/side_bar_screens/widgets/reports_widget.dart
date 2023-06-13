@@ -6,11 +6,11 @@ class ReportsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Stream<QuerySnapshot> _productsStream =
+    final Stream<QuerySnapshot> _reportsStream =
         FirebaseFirestore.instance.collection('Reports').snapshots();
 
     return StreamBuilder<QuerySnapshot>(
-      stream: _productsStream,
+      stream: _reportsStream,
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (snapshot.hasError) {
           return Text('Something went wrong');
@@ -23,7 +23,7 @@ class ReportsWidget extends StatelessWidget {
         }
 
         return ListView.builder(
-          scrollDirection: Axis.vertical,
+            scrollDirection: Axis.vertical,
             shrinkWrap: true,
             itemCount: snapshot.data!.size,
             itemBuilder: (context, index) {
@@ -32,7 +32,7 @@ class ReportsWidget extends StatelessWidget {
                 children: [
                   Container(
                     width: MediaQuery.of(context).size.width - 50,
-                    height:MediaQuery.of(context).size.height/ 3,
+                    height: MediaQuery.of(context).size.height / 3,
                     padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                     margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                     decoration: BoxDecoration(

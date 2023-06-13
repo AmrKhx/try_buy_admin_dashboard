@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class ProductWidget extends StatelessWidget {
+class ProductWidget extends StatefulWidget {
   const ProductWidget({super.key});
 
   @override
+  State<ProductWidget> createState() => _ProductWidgetState();
+}
+
+class _ProductWidgetState extends State<ProductWidget> {
+  @override
+  var sum1;
+
   Widget build(BuildContext context) {
     final Stream<QuerySnapshot> _productsStream =
         FirebaseFirestore.instance.collection('Products').snapshots();
